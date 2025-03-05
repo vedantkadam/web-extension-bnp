@@ -1,0 +1,20 @@
+{
+  "manifest_version": 3,
+  "name": "Watermark Websites",
+  "version": "1.0",
+  "description": "Adds a watermark to websites based on URL patterns.",
+  "permissions": ["scripting", "activeTab"],
+  "host_permissions": [
+    "https://markets360.bnpparibas.com/contentportal/portal-content-service/markets360",
+    "https://markets360.bnpparibas.com-preprod/contentportal/portal-content-service/markets360"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://markets360.bnpparibas.com/contentportal/portal-content-service/markets360",
+        "https://markets360.bnpparibas.com-preprod/contentportal/portal-content-service/markets360"
+      ],
+      "js": ["content.js"]
+    }
+  ]
+}
