@@ -1,9 +1,10 @@
-(function () {
+chrome.storage.sync.get(["prodUrl", "preprodUrl"], function (data) {
   let watermarkText = "";
+  const currentUrl = window.location.href;
 
-  if (window.location.href.includes("markets360.bnpparibas.com-preprod")) {
+  if (data.preprodUrl && currentUrl.includes(data.preprodUrl)) {
     watermarkText = "PREPRODUCTION";
-  } else if (window.location.href.includes("markets360.bnpparibas.com")) {
+  } else if (data.prodUrl && currentUrl.includes(data.prodUrl)) {
     watermarkText = "PRODUCTION";
   }
 
@@ -23,7 +24,6 @@
       whiteSpace: "nowrap",
       textTransform: "uppercase",
     });
-
     document.body.appendChild(watermark);
   }
-})();
+});
